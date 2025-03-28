@@ -42,26 +42,39 @@ def playerMove():
         except (ValueError, IndexError):
             print("Invalid input, please try again")
 
-def check_Won(row):
-    """
-    looks at the row to see if the player / computer has 3 in a row
-    """
-    for row in gameboard:
-        if row[0] != "0" and row[0] == row[1] == row[2]:
-            return True
+    def check_Won(row):
+        """
+        looks at the row to see if the player / computer has 3 in a row
+        """
+        for row in gameboard:
+            """
+            checks rows
+            """
+            if row[0] != "0" and row[0] == row[1] == row[2]:
+                return True
+            
+        for col in range(3):
+            """
+            check columns
+            """
+            if gameboard[0][col] == gameboard[1][col] == gameboard[2][col] and gameboard[0][col] != "":
+                print("YOU WON!!!")
+                return True
         
-    for col in range(3);
-        if gameboard[0][col] == gameboard[1][col] == gameboard[2][col]
-    
-def check_Won():
-    """
-    looks at the gameboard to see if theres any in common
-    """
-    for i, row in enumerate(gameboard):
-        if check_Won(row):
-            print(f"Row {i+1} has 3 of the same value!")
-        else:
-            print(f"Row {i+1} does not have 3 of the same value.")
+        if gameboard[0][0] == gameboard[1][1] == gameboard[2][2] and gameboard[0][0] != "":
+            print("YOU WON!!!")
+            return True
+        if gameboard[0][2] == gameboard[1][1] == gameboard[2][0] and gameboard[0][0] != "":
+            return True
+
+        return False
+        
+    def checkDraw():
+        for row in gameboard:
+            if "" in row:
+                return False
+        print("You drew!")
+        return True
 
 def main():
     printGameboard()
