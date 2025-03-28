@@ -5,7 +5,9 @@ gameboard = [
     ["", "", ""],
     ["", "", ""]
 ]
-print(tabulate(gameboard, tablefmt="rounded_grid")) # add tabulate headers.
+
+def printGameboard():
+    print(tabulate(gameboard, headers =["Column 0", "Column 1", "Column 2"], tablefmt="rounded_grid", colalign=["center", "center", "center"])) 
 
     
 def playersChoice():
@@ -16,8 +18,9 @@ def playersChoice():
             break
         else:
                 player = input("Player, please choose, X or O for your go:\n").strip().upper()
+    return player
 
-def PlayerMove():
+def playerMove():
     """
     where the player decides where to put their x / o
     """
@@ -29,17 +32,24 @@ def PlayerMove():
             cell_value = gameboard[row_index][column_index]
             
             if cell_value == "":
-                cell_value = player
+                gameboard[row_index][column_index] = player
+                printGameboard()
+                check_Won()
                 break
             else:
                 print("Cell already taken, try again.")
-                return False
             
         except (ValueError, IndexError):
             print("Invalid input, please try again")
-            return False
 
+def check_Won():
+    """
+    looks at the data to see if the player / computer has 3 in a row
+    """
+    if 
 
 def main():
-    PlayerMove()
+    printGameboard()
+    playerMove()
+    check_Won()
 main()
