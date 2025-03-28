@@ -42,11 +42,26 @@ def playerMove():
         except (ValueError, IndexError):
             print("Invalid input, please try again")
 
+def check_Won(row):
+    """
+    looks at the row to see if the player / computer has 3 in a row
+    """
+    for row in gameboard:
+        if row[0] != "0" and row[0] == row[1] == row[2]:
+            return True
+        
+    for col in range(3);
+        if gameboard[0][col] == gameboard[1][col] == gameboard[2][col]
+    
 def check_Won():
     """
-    looks at the data to see if the player / computer has 3 in a row
+    looks at the gameboard to see if theres any in common
     """
-    if 
+    for i, row in enumerate(gameboard):
+        if check_Won(row):
+            print(f"Row {i+1} has 3 of the same value!")
+        else:
+            print(f"Row {i+1} does not have 3 of the same value.")
 
 def main():
     printGameboard()
