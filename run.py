@@ -6,21 +6,22 @@ gameboard = [
     ["", "", ""],
     ["", "", ""]
 ]
-def endgame():
-    """
-    ends the game
-    """
-    playagain = input(f"Would you like to play again?(y/n)\n").strip().lower()
-    if playagain == "y":
-        game()
-    elif playagain != "y" and playagain !="n":
-        while playagain != "y" and playagain !="n":
-                playagain = input(f"Would you like to play again?(y/n)\n").strip().lower()
-    else:
-         print("Thank you for playing!")
-         
+
 def game():
-    
+
+    def endgame():
+        """
+        ends the game
+        """
+        playagain = input(f"Would you like to play again?(y/n)\n").strip().lower()
+        if playagain == "y":
+            game()
+        elif playagain != "y" and playagain !="n":
+            while playagain != "y" and playagain !="n":
+                    playagain = input(f"Would you like to play again?(y/n)\n").strip().lower()
+        else:
+            print("Thank you for playing!")
+         
     def playersChoice():
             #player = input("\nPlayer, are you X or O?:\n").strip().upper()
             player = ""
@@ -84,8 +85,7 @@ def game():
                 print("You Won")
                 return True
                 endgame()
-            else:
-                continue
+
                 
         def checkDraw():
             for row in gameboard:
