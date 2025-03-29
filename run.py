@@ -12,7 +12,7 @@ def game():
             #player = input("\nPlayer, are you X or O?:\n").strip().upper()
             player = ""
             while player != "X" and player !="O":
-                        player = input("Player, are you X or O?:\n").strip().upper()
+                        player = input("\nPlayer, are you X or O?:\n").strip().upper()
             return player
     player = playersChoice()
     
@@ -75,7 +75,7 @@ def game():
 
             while True:
                 try:
-                    row_index = int(input("Choose you row between 0 & 2:"))
+                    row_index = int(input("Choose your row between 0 & 2:"))
                     column_index = int(input("Choose your column between 0 & 2:"))
                     cell_value = gameboard[row_index][column_index]
                     
@@ -102,9 +102,10 @@ def game():
 
             while True:
                 try:
+                    print("Computer's Turn...")
                     row_index = random.randint(0,2)
                     column_index = random.randint(0,2)
-                    print(f"{row_index}, {column_index}")
+                    print(f"Computer plays: row: {row_index} & column: {column_index}")
                     cell_value = gameboard[row_index][column_index]
                     
                     if cell_value == "":
