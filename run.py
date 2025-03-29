@@ -1,6 +1,6 @@
 from tabulate import tabulate 
 import random
-
+import sys
 
 
 def game():
@@ -18,13 +18,18 @@ def game():
         """
         playagain = input(f"Would you like to play again?(y/n)\n").strip().lower()
         if playagain == "y":
+            gameboard = [
+                ["", "", ""],
+                ["", "", ""],
+                ["", "", ""]
+            ]
             game()
         elif playagain != "y" and playagain !="n":
             while playagain != "y" and playagain !="n":
                     playagain = input(f"Would you like to play again?(y/n)\n").strip().lower()
         else:
             print("Thank you for playing!")
-            exit
+            sys.exit()
          
     def playersChoice():
             #player = input("\nPlayer, are you X or O?:\n").strip().upper()
