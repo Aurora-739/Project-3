@@ -2,6 +2,7 @@ from tabulate import tabulate
 import random
 import sys
 
+# FIX THE COMPUTER'S AYTOMATIC WIN
 
 def game():
     gameboard = [
@@ -77,7 +78,6 @@ def game():
                 endgame()
                 return True
             return False
-
                 
         def checkDraw():
             for row in gameboard:
@@ -107,17 +107,19 @@ def game():
                             return True
                         computer()
                         break
-                    else:
+                    elif cell_value != "":
                         if check_Won():
                             return True
                         if checkDraw():
                             return True
+                    else:
                         print("Cell already taken, try again.")
                         
                     
                 except (ValueError, IndexError):
                     print("Invalid input, please try again")
 
+        computersChoice = ""
         def computer():
             """
             The computer's Turn
@@ -137,21 +139,56 @@ def game():
                         gameboard[row_index][column_index] = computersChoice
                         print("Computer's Turn...")
                         print(f"Computer plays: row: {row_index} & column: {column_index}")
-                        if check_Won():
+                        if check_Comp_Won():
                             return True
                         if checkDraw():
                             return True
                         playerMove(player)
                         break
-                    else:
-                        if check_Won():
+                    elif cell_value != "":
+                        if check_Comp_Won():
                             return True
                         if checkDraw():
                             return True
+                        
+                    else:
                         computer()
                     
                 except (ValueError, IndexError):
                     computer()
+
+        def check_Comp_Won():
+            """
+            looks at the row to see if the computer has 3 in a row
+            """
+            win = False
+            for row in range(3):
+                if gameboard[row][0] == gameboard[row][1] == gameboard[row][2] == computersChoice:
+                    win = True
+                    break
+            for col in range(3):
+                if gameboard[0][col] == gameboard[1][col] == gameboard[2][col] == computersChoice:
+                    win = True
+                    break
+            if gameboard[0][0] == gameboard[1][1] == gameboard[2][2] == computersChoice:
+                """
+                    Checks diagonal (top left to bot. right)
+                    """
+                win = True
+                #return win
+            if gameboard[0][2] == gameboard[1][1] == gameboard[2][0] == computersChoice:
+                    """
+                    Checks diagonal (top right to bot. left)
+                    """
+                    win = True
+                    #return win
+
+            if win == True:
+                print("Computer Won")
+                printGameboard()
+                endgame()
+                return True
+            return False
 
 
 
