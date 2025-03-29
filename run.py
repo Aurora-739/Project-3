@@ -6,6 +6,19 @@ gameboard = [
     ["", "", ""],
     ["", "", ""]
 ]
+def endgame():
+    """
+    ends the game
+    """
+    playagain = input(f"Would you like to play again?(y/n)\n").strip().lower()
+    if playagain == "y":
+        game()
+    elif playagain != "y" and playagain !="n":
+        while playagain != "y" and playagain !="n":
+                playagain = input(f"Would you like to play again?(y/n)\n").strip().lower()
+    else:
+         print("Thank you for playing!")
+         
 def game():
     
     def playersChoice():
@@ -23,38 +36,56 @@ def game():
         """
 
         def check_Won():
+            """
+            looks at the row to see if the player / computer has 3 in a row
+            """
+            if gameboard[0][0] == gameboard[0][1] == gameboard[0][2] == player:
                 """
-                looks at the row to see if the player / computer has 3 in a row
+                row 0 == player
                 """
-                for row in gameboard:
-                    """
-                    checks rows
-                    """
-                    if row[0] != "" and row[0] == row[1] == row[2]:
-                        break
-                    
-                for col in range(3):
-                    """
-                    check columns
-                    """
-                    if gameboard[0][col] == gameboard[1][col] == gameboard[2][col] and gameboard[0][col] != "":
-                        #print("YOU WON!!!")
-                        return False
-                
-                if gameboard[0][0] == gameboard[1][1] == gameboard[2][2] and gameboard[0][0] != "":
+                win == True
+            elif gameboard[1][0] == gameboard[1][1] == gameboard[1][2] == player:
+                """
+                row 1 == player
+                """
+                win == True
+            elif gameboard[2][0] == gameboard[2][1] == gameboard[2][2] == player:
+                """
+                row 2 == player
+                """
+                win == True
+            elif gameboard[0][0] == gameboard[1][0] == gameboard[2][0] == player:
+                """
+                column 0 == player
+                """
+                win == True
+            elif gameboard[0][1] == gameboard[1][1] == gameboard[2][1] == player:
+                """
+                column 1 == player
+                """
+                win == True
+            elif gameboard[0][2] == gameboard[1][2] == gameboard[2][2] == player:
+                """
+                column 2 == player
+                """
+                win == True
+            elif gameboard[0][0] == gameboard[1][1] == gameboard[2][2] and gameboard[0][0] != "":
                     """
                     Checks diagonal (top left to bot. right)
                     """
-                    #print("YOU WON!!!")
-                    return False
-                if gameboard[0][2] == gameboard[1][1] == gameboard[2][0] and gameboard[0][0] != "":
+                    win = True
+            elif gameboard[0][2] == gameboard[1][1] == gameboard[2][0] and gameboard[0][0] != "":
                     """
                     Checks diagonal (top right to bot. left)
                     """
-                    #print("YOU WON!!!")
-                    return False
+                    win = True
 
+            if win == True:
+                print("You Won")
                 return True
+                endgame()
+            else:
+                continue
                 
         def checkDraw():
             for row in gameboard:
@@ -82,11 +113,12 @@ def game():
                     if cell_value == "":
                         gameboard[row_index][column_index] = player
                         check_Won()
-                        checkDraw()
+                        #checkDraw()
                         computer()
                         break
                     else:
                         print("Cell already taken, try again.")
+                        checkDraw()
                     
                 except (ValueError, IndexError):
                     print("Invalid input, please try again")
@@ -111,10 +143,11 @@ def game():
                     if cell_value == "":
                         gameboard[row_index][column_index] = computersChoice
                         check_Won()
-                        checkDraw()
+                        #checkDraw()
                         playerMove(player)
                         break
                     else:
+                        checkDraw()
                         computer()
                     
                 except (ValueError, IndexError):
