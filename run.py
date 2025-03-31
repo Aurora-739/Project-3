@@ -145,11 +145,13 @@ class TicTacToeGame:
         """
         if self.board.check_Won(self.player.get_symbol()):
             print("You Won!!!")
+            self.printGameboard()
             self.endGame()
             return True
         if self.board.check_Won(self.computer.get_symbol()):
             print("Computer Won")
-            self.endgame()
+            self.printGameboard()
+            self.endGame()
             return True
         return False
     
@@ -167,6 +169,7 @@ class TicTacToeGame:
                 break
             if self.board.checkDraw():
                 print("You drew!")
+                self.printGameboard()
                 self.endGame()
                 break
             
@@ -176,6 +179,7 @@ class TicTacToeGame:
                 break
             if self.board.checkDraw():
                 print("Your drew!")
+                self.printGameboard()
                 self.endGame()
                 break
 
