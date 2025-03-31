@@ -2,8 +2,6 @@ from tabulate import tabulate
 import random
 import sys
 
-# FIX THE COMPUTER'S AYTOMATIC WIN
-
 def game():
     gameboard = [
         ["", "", ""],
@@ -167,18 +165,18 @@ def game():
             while True:
                 # Player's turn
                 playerMove(player)
-                # After player's move, check if the player has won
+                # check if player has won
                 if check_Won():
                     break
-                # After the player's move, check for a draw
+                # check for draw
                 if checkDraw():
                     break
-                # Computer's turn
+                # computer's turn
                 computersChoice = computer()
-                # After computer's move, check if the computer has won
+                # check if computer has won
                 if check_Comp_Won(computersChoice):
                     break
-                # After the computer's move, check for a draw
+                # check for draw
                 if checkDraw():
                     break        
         main()
