@@ -46,3 +46,18 @@ I have a few data models in this code.
    * represents the player in the game (either the user or the computer)
 3. TicTacToeGame:
    * This is the main logic class. It initialises the game with GameBoard and Player instances.
+
+## Testing
+I have manually tested this project through the following:
+* I have run the code through a PEP8 linter and have removed all relevant problems.
+![image](https://github.com/user-attachments/assets/6834c124-f2ed-48d7-b747-3dd33282043e)
+Above is an image showing all the errors that I have not got rid of. 16, 20, 32, 35, 84, 103, 120, 122, 131 & 136 all refer to "line too long", with a various number of characters. I left these in my project because fixing them in most cases would lead to more inefficient code or more unreadable code, both of which are not useful in this project.
+* Given invalid input (some of which is demonstrated above in exsisting features).
+* Tested my local terminal and the Code Institute Heroku terminal.
+
+### Remaining Bugs
+No remaining bugs.
+
+### Validator Testing
+* PEP8
+  * Irrelevant errors were found in [PEP8online.com](https://pep8ci.herokuapp.com/#)
