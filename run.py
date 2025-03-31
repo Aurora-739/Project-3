@@ -101,25 +101,12 @@ def game():
                     
                     if cell_value == "":
                         gameboard[row_index][column_index] = player
-                        if check_Won():
-                            return True
-                        if checkDraw():
-                            return True
-                        computer()
                         break
-                    elif cell_value != "":
-                        if check_Won():
-                            return True
-                        if checkDraw():
-                            return True
                     else:
                         print("Cell already taken, try again.")
-                        
-                    
                 except (ValueError, IndexError):
                     print("Invalid input, please try again")
 
-        computersChoice = ""
         def computer():
             """
             The computer's Turn
@@ -129,6 +116,7 @@ def game():
             else:
                 computersChoice = "X"
 
+
             while True:
                 try:
                     row_index = random.randint(0,2)
@@ -136,28 +124,17 @@ def game():
                     cell_value = gameboard[row_index][column_index]
                     
                     if cell_value == "":
-                        gameboard[row_index][column_index] = computersChoice
                         print("Computer's Turn...")
+                        gameboard[row_index][column_index] = computersChoice
                         print(f"Computer plays: row: {row_index} & column: {column_index}")
-                        if check_Comp_Won():
-                            return True
-                        if checkDraw():
-                            return True
-                        playerMove(player)
-                        break
-                    elif cell_value != "":
-                        if check_Comp_Won():
-                            return True
-                        if checkDraw():
-                            return True
-                        
-                    else:
-                        computer()
-                    
+                        break                                 
                 except (ValueError, IndexError):
-                    computer()
-
-        def check_Comp_Won():
+                    pass
+        def check_Comp_Won(computersChoice):
+            if player == "X":
+                computersChoice = "O"
+            else:
+                computersChoice = "X"
             """
             looks at the row to see if the computer has 3 in a row
             """
@@ -165,34 +142,44 @@ def game():
             for row in range(3):
                 if gameboard[row][0] == gameboard[row][1] == gameboard[row][2] == computersChoice:
                     win = True
-                    break
             for col in range(3):
                 if gameboard[0][col] == gameboard[1][col] == gameboard[2][col] == computersChoice:
-                    win = True
-                    break
-            if gameboard[0][0] == gameboard[1][1] == gameboard[2][2] == computersChoice:
-                """
-                    Checks diagonal (top left to bot. right)
-                    """
-                win = True
-                #return win
-            if gameboard[0][2] == gameboard[1][1] == gameboard[2][0] == computersChoice:
-                    """
-                    Checks diagonal (top right to bot. left)
-                    """
-                    win = True
-                    #return win
+                            win = True
+                if gameboard[0][0] == gameboard[1][1] == gameboard[2][2] == computersChoice:
+                        """
+                            Checks diagonal (top left to bot. right)
+                            """
+                        win = True
+                if gameboard[0][2] == gameboard[1][1] == gameboard[2][0] == computersChoice:
+                        """
+                        Checks diagonal (top right to bot. left)
+                        """
+                        win = True
 
             if win == True:
-                print("Computer Won")
+                print("Computer Wins")
                 printGameboard()
                 endgame()
                 return True
             return False
-
-
-
+        
         def main():
-            playerMove(player)
+            while True:
+                # Player's turn
+                playerMove(player)
+                # After player's move, check if the player has won
+                if check_Won():
+                    break
+                # After the player's move, check for a draw
+                if checkDraw():
+                    break
+                # Computer's turn
+                computersChoice = computer()
+                # After computer's move, check if the computer has won
+                if check_Comp_Won(computersChoice):
+                    break
+                # After the computer's move, check for a draw
+                if checkDraw():
+                    break        
         main()
 game()
