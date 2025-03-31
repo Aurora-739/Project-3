@@ -61,3 +61,21 @@ No remaining bugs.
 ### Validator Testing
 * PEP8
   * Irrelevant errors were found in [PEP8online.com](https://pep8ci.herokuapp.com/#)
+
+## Deployment
+This project was deployed using the Code Institute's mock terminal for Heroku. ([link here](https://project-3-tic-tac-toe-3815fa166ad5.herokuapp.com/))
+
+Steps for deployment:
+ * Clone the github repository.
+ * Create a new Heroku app.
+ * Set the buildpacks for Python and NodeJS (in that order).
+ * Link the Heroku app to the GitHub repository.
+ * Click on Deploy Branch.
+ * A little button pops up; click "view".
+
+## Credits
+The Code Institute for the deployment terminal.
+
+The Code Institute for the GitHub repository.
+
+Wikipedia for details of Tic Tac Toe.
