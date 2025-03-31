@@ -37,3 +37,12 @@ Tic-Tac-Toe is based on the classic version of "tic-tac-toe" or "naughts and cro
   
 ![image](https://github.com/user-attachments/assets/f26ae5da-3407-4dc2-b5cd-b34e570c4686)
 
+## Data Models
+I have a few data models in this code.
+
+1. GameBoard:
+   * This class represents the game board (the 3 by 3 grid) and contains methods to manage the game state.
+2. Player:
+   * represents the player in the game (either the user or the computer)
+3. TicTacToeGame:
+   * This is the main logic class. It initialises the game with GameBoard and Player instances.
