@@ -1,6 +1,7 @@
-from tabulate import tabulate 
+from tabulate import tabulate
 import random
 import sys
+
 
 def game():
     gameboard = [
@@ -8,8 +9,11 @@ def game():
         ["", "", ""],
         ["", "", ""]
     ]
+
     def printGameboard():
-                print(tabulate(gameboard, headers =["Column 0", "Column 1", "Column 2"], tablefmt="rounded_grid", colalign=["center", "center", "center"]))
+        headers = ["Column 0", "Column 1", "Column 2"]
+        colalign = ["center", "center", "center"]
+        print(tabulate(gameboard, headers=headers, tablefmt="rounded_grid", colalign=colalign))
 
     def endgame():
         """
@@ -23,22 +27,21 @@ def game():
                 ["", "", ""]
             ]
             game()
-        elif playagain != "y" and playagain !="n":
-            while playagain != "y" and playagain !="n":
-                    playagain = input(f"Would you like to play again?(y/n)\n").strip().lower()
+        elif playagain != "y" and playagain != "n":
+            while playagain != "y" and playagain != "n":
+                playagain = input(f"Would you like to play again?(y/n)\n").strip().lower()
         else:
             print("Thank you for playing!")
             sys.exit()
-         
+
     def playersChoice():
-            #player = input("\nPlayer, are you X or O?:\n").strip().upper()
-            player = ""
-            while player != "X" and player !="O":
-                        player = input("\nPlayer, are you X or O?:\n").strip().upper()
+        # player = input("\nPlayer, are you X or O?:\n").strip().upper()
+        player = ""
+        while player != "X" and player != "O":
+            player = input("\nPlayer, are you X or O?:\n").strip().upper()
             return player
     player = playersChoice()
-    
-            
+
     while True:
         """
         to continue the game until there is a Win or a loss
@@ -62,21 +65,19 @@ def game():
                     Checks diagonal (top left to bot. right)
                     """
                 win = True
-                #return win
             if gameboard[0][2] == gameboard[1][1] == gameboard[2][0] == player:
-                    """
-                    Checks diagonal (top right to bot. left)
-                    """
-                    win = True
-                    #return win
+                """
+                Checks diagonal (top right to bot. left)
+                """
+                win = True
 
-            if win == True:
+            if win is True:
                 print("You Won")
                 printGameboard()
                 endgame()
                 return True
             return False
-                
+
         def checkDraw():
             for row in gameboard:
                 if "" in row:
@@ -96,7 +97,7 @@ def game():
                     row_index = int(input("Choose your row between 0 & 2:"))
                     column_index = int(input("Choose your column between 0 & 2:"))
                     cell_value = gameboard[row_index][column_index]
-                    
+
                     if cell_value == "":
                         gameboard[row_index][column_index] = player
                         break
@@ -114,20 +115,20 @@ def game():
             else:
                 computersChoice = "X"
 
-
             while True:
                 try:
-                    row_index = random.randint(0,2)
-                    column_index = random.randint(0,2)
+                    row_index = random.randint(0, 2)
+                    column_index = random.randint(0, 2)
                     cell_value = gameboard[row_index][column_index]
-                    
+
                     if cell_value == "":
                         print("Computer's Turn...")
                         gameboard[row_index][column_index] = computersChoice
                         print(f"Computer plays: row: {row_index} & column: {column_index}")
-                        break                                 
+                        break
                 except (ValueError, IndexError):
                     pass
+
         def check_Comp_Won(computersChoice):
             if player == "X":
                 computersChoice = "O"
@@ -142,25 +143,25 @@ def game():
                     win = True
             for col in range(3):
                 if gameboard[0][col] == gameboard[1][col] == gameboard[2][col] == computersChoice:
-                            win = True
+                    win = True
                 if gameboard[0][0] == gameboard[1][1] == gameboard[2][2] == computersChoice:
+                    """
+                        Checks diagonal (top left to bot. right)
                         """
-                            Checks diagonal (top left to bot. right)
-                            """
-                        win = True
+                    win = True
                 if gameboard[0][2] == gameboard[1][1] == gameboard[2][0] == computersChoice:
-                        """
-                        Checks diagonal (top right to bot. left)
-                        """
-                        win = True
+                    """
+                    Checks diagonal (top right to bot. left)
+                    """
+                    win = True
 
-            if win == True:
+            if win is True:
                 print("Computer Wins")
                 printGameboard()
                 endgame()
                 return True
             return False
-        
+
         def main():
             while True:
                 # Player's turn
@@ -178,6 +179,6 @@ def game():
                     break
                 # check for draw
                 if checkDraw():
-                    break        
+                    break
         main()
 game()
