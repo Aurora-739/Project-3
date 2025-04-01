@@ -58,6 +58,12 @@ Above is an image showing all the errors that I have not got rid of. 16, 20, 32,
 ### Remaining Bugs
 No remaining bugs.
 
+### Bugs in development
+
+### Origional flowchart
+![image](https://github.com/user-attachments/assets/7e2ebca7-4c4f-42fa-b56d-ba588d1b6792)
+There are a few changes to this from the original concept idea to the actual creation. One big change that can be noted is that the row and columns are not inputted simultaneously. I thought that inputting them separately creates a more user-friendly and readable look than the original plan.
+
 ### Validator Testing
 * PEP8
   * Irrelevant errors were found in [PEP8online.com](https://pep8ci.herokuapp.com/#)
