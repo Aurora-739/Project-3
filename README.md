@@ -59,6 +59,7 @@ Above is an image showing all the errors that I have not got rid of. 16, 20, 32,
 No remaining bugs.
 
 ### Bugs in development
+A few bugs in development was an issue with the Check_won section when called, especially from the computer. It was an automatic win. I discovered that I had added in above def computer() a variable calling computerschoice = "", which led to, due to the way I was checking for a win, there being 3 "empty" rows all with the value of "" which meant an immediate win. 
 
 ### Origional flowchart
 ![image](https://github.com/user-attachments/assets/7e2ebca7-4c4f-42fa-b56d-ba588d1b6792)
